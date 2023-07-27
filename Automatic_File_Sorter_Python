@@ -1,0 +1,19 @@
+import os, shutil 
+
+path = r"YOUR DIRECTORY PATH"
+
+file_name = os.listdir(path)
+
+folder_names = ['CSV FILES', 'IMAGE FILES', 'VIDEO FILES']
+
+for loop in range(0,3):
+    if not os.path.exists(path + folder_names[loop]):
+        os.makedirs((path + folder_names[loop]))
+
+for file in file_name:
+    if ".csv" in file and not os.path.exists(path + "CSV FILES/" + file):
+        shutil.move(path + file, path + "CSV FILES/" + file)
+    elif ".mp4" in file and not os.path.exists(path + "VIDEO FILES/" + file):
+        shutil.move(path + file, path + "VIDEO FILES/" + file)
+    elif ".jpg" in file and not os.path.exists(path + "IMAGE FILES/" + file):
+        shutil.move(path + file, path + "IMAGE FILES/" + file)
